@@ -24,15 +24,27 @@ impl Sudoku {
 
     pub fn does_num_exist(&self, row: i32, col: i32, num: i32) -> bool {
         // checking column
-        for temp_row in 0..9 {
-            if self.board[temp_row][col as usize] == num {
+        // for temp_row in 0..9 {
+        //     if self.board[temp_row][col as usize] == num {
+        //         return true;
+        //     }
+        // }
+
+        for temp_row in self.board {
+            if temp_row[col as usize] == num {
                 return true;
             }
         }
 
         // checking row
-        for temp_col in 0..9 {
-            if self.board[row as usize][temp_col] == num {
+        // for temp_col in 0..9 {
+        //     if self.board[row as usize][temp_col] == num {
+        //         return true;
+        //     }
+        // }
+
+        for value in &self.board[row as usize] {
+            if *value == num {
                 return true;
             }
         }
@@ -87,13 +99,13 @@ impl Sudoku {
         }
 
         // Fixed print statement
-        println!("Loaded sudoku from file: {}", filename);
-        for row in &self.board {
-            for &num in row {
-                print!("{} ", num);
-            }
-            println!();
-        }
+        // println!("Loaded sudoku from file: {}", filename);
+        // for row in &self.board {
+        //     for &num in row {
+        //         print!("{} ", num);
+        //     }
+        //     println!();
+        // }
 
         Ok(()) // Explicitly return an 'Ok' variant to indicate success
     }
